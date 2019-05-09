@@ -30,7 +30,7 @@ public class Shooting : MonoBehaviour
         SelectWeapon(0);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // If there is a weapon
         if (currentWeapon)
