@@ -2,48 +2,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using NaughtyAttributes;
+
 public class Player : MonoBehaviour
 {
     public float runSpeed = 8f;
     public float walkSpeed = 6f;
+    [MinMaxSlider(0, 100)]
+    public Vector2 speed;
     public float gravity = -10f;
     public float jumpHeight = 15f;
-    public float groundRayDistance = 1.1f;
+    [Header("Dash")]
+    public float dashDuration = .5f;
+
+    [ShowAssetPreview]
+    public GameObject prefab;
 
     private CharacterController controller; // Reference to CharacterController
     private Vector3 motion; // Is the movement offset per frame
-
-    void OnDrawGizmos()
+    private bool isJumping;
+    private float currentJumpHeight, currentSpeed;
+    void OnValidate()
     {
-        Ray groundRay = new Ray(transform.position, -transform.up);
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position - transform.up * groundRayDistance);
+        currentJumpHeight = jumpHeight;
+        currentSpeed = walkSpeed;
     }
-
-    // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        // Set initial states
+        currentSpeed = walkSpeed;
+        currentJumpHeight = jumpHeight;
     }
-
-    // Update is called once per frame
     void Update()
     {
         // Get W, A, S, D or Left, Right, Up, Down Input
         float inputH = Input.GetAxis("Horizontal");
         float inputV = Input.GetAxis("Vertical");
+        // Left Shift Input
+        bool inputRun = Input.GetKeyDown(KeyCode.LeftShift);
+        bool inputWalk = Input.GetKeyUp(KeyCode.LeftShift);
+        // Space Bar Input
+        bool inputJump = Input.GetButtonDown("Jump");
+
+        // If we need to run
+        if (inputRun)
+        {
+            currentSpeed = runSpeed;
+        }
+
+        // If we need to walk
+        if (inputWalk)
+        {
+            currentSpeed = walkSpeed;
+        }
+
         // Move character motion with inputs
         Move(inputH, inputV);
+
         // Is the Player grounded?
-        if (IsGrounded())
+        if (controller.isGrounded)
         {
             // Cancel gravity
             motion.y = 0f;
+            // .. And pressing jump?
+            if (inputJump)
+            {
+                Jump(jumpHeight);
+            }
             // Pressing Jump Button?
-            if (Input.GetButtonDown("Jump"))
+            if (isJumping)
             {
                 // Make the Player Jump!
-                motion.y = jumpHeight;
+                motion.y = currentJumpHeight;
+                // Reset back to false
+                isJumping = false;
             }
         }
         // Apply gravity
@@ -51,20 +84,6 @@ public class Player : MonoBehaviour
         // Move the controller with motion
         controller.Move(motion * Time.deltaTime);
     }
-
-
-    // Check if the player is touching the ground
-    bool IsGrounded()
-    {
-        return controller.isGrounded;
-        //
-        //// Raycast below the player
-        //Ray groundRay = new Ray(transform.position, -transform.up);
-        //// If hitting something
-        //return Physics.Raycast(groundRay, groundRayDistance);
-    }
-
-    // Move the character's motion in direction of input
     void Move(float inputH, float inputV)
     {
         // Generate direction from input
@@ -73,8 +92,41 @@ public class Player : MonoBehaviour
         // Convert local space to world space direction
         direction = transform.TransformDirection(direction);
 
+        // Check if direction exceeds magnitude of 1
+        if (direction.magnitude > 1f)
+        {
+            // Normalize it!
+            direction.Normalize();
+        }
+
         // Apply motion to only X and Z
-        motion.x = direction.x * walkSpeed;
-        motion.z = direction.z * walkSpeed;
+        motion.x = direction.x * currentSpeed;
+        motion.z = direction.z * currentSpeed;
+    }
+    public IEnumerator SpeedBoost(float boostSpeed, float duration)
+    {
+        currentSpeed += boostSpeed;
+
+        yield return new WaitForSeconds(duration);
+
+        currentSpeed -= boostSpeed;
+    }
+
+    [Button("Run Jump!")]
+    public void Jump()
+    {
+        Jump(50);
+    }
+
+
+    public void Jump(float height)
+    {
+        isJumping = true; // Tell the controller to jump (at the right time)
+        currentJumpHeight = height;
+    }
+
+    public void Dash(float boost)
+    {
+        StartCoroutine(SpeedBoost(boost, dashDuration));
     }
 }

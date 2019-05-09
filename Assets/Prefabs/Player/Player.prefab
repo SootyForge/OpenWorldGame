@@ -128,9 +128,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runSpeed: 8
   walkSpeed: 6
+  speed: {x: 10, y: 50}
   gravity: -20
   jumpHeight: 15
-  groundRayDistance: 1.1
+  dashDuration: 0.5
+  prefab: {fileID: 0}
 --- !u!114 &3259609108152064311
 MonoBehaviour:
   m_ObjectHideFlags: 0
