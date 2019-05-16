@@ -278,13 +278,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  attackRate: 0.2
+  attackRate: 5
   canShoot: 0
   maxReserve: 500
   maxClip: 20
   spread: 2
   recoil: 1
-  range: 10
+  range: 2
   shotOrigin: {fileID: 4844595557062866}
   projectilePrefab: {fileID: 77005964941557824, guid: 7a71a01b6f20dce4f9c509778da6e643,
     type: 3}

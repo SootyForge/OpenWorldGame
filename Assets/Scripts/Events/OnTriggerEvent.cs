@@ -7,45 +7,45 @@ using NaughtyAttributes;
 
 public class OnTriggerEvent : MonoBehaviour
 {
-    [Tag]
-    public string hitTag;
-    public UnityEvent onEnter, onStay, onExit;
+  [Tag]
+  public string hitTag;
+  public UnityEvent onEnter, onStay, onExit;
 
-    private void Reset()
+  private void Reset()
+  {
+    // Does the object have a collider?
+    Collider col = GetComponent<Collider>();
+    if (col)
     {
-        // Does the object have a collider?
-        Collider col = GetComponent<Collider>();
-        if (col)
-        {
-            // Forces the attached collider to be a trigger
-            col.isTrigger = true;
-        }
-        else
-        {
-            // Debug LogWarning
-            Debug.LogWarning("The GameObject named '" + name + "' does not have a collider, and will not work with OnTriggerEvent");
-        }
+      // Forces the attached collider to be a trigger
+      col.isTrigger = true;
     }
+    else
+    {
+      // Debug LogWarning
+      Debug.LogWarning("The GameObject named '" + name + "' does not have a collider, and will not work with OnTriggerEvent");
+    }
+  }
 
-    private void OnTriggerEnter(Collider other)
+  private void OnTriggerEnter(Collider other)
+  {
+    if (other.tag == hitTag || hitTag == "")
     {
-        if(other.tag == hitTag || hitTag == "")
-        {
-            onEnter.Invoke();
-        }
+      onEnter.Invoke();
     }
-    private void OnTriggerStay(Collider other)
+  }
+  private void OnTriggerStay(Collider other)
+  {
+    if (other.tag == hitTag || hitTag == "")
     {
-        if (other.tag == hitTag || hitTag == "")
-        {
-            onStay.Invoke();
-        }
+      onStay.Invoke();
     }
-    private void OnTriggerExit(Collider other)
+  }
+  private void OnTriggerExit(Collider other)
+  {
+    if (other.tag == hitTag || hitTag == "")
     {
-        if (other.tag == hitTag || hitTag == "")
-        {
-            onExit.Invoke();
-        }
+      onExit.Invoke();
     }
+  }
 }

@@ -75,8 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976e282ed9407f048abe7a914f549362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
-  bulletHolePrefab: {fileID: 5904778190403064552, guid: 2ad163943beee8a4dbdf56a179f0c554,
+  damage: 5
+  speed: 200
+  effectPrefab: {fileID: 5904778190403064552, guid: 2ad163943beee8a4dbdf56a179f0c554,
     type: 3}
   line: {fileID: 8965948473291087702}
 --- !u!1 &4334910980080089872

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melee : Weapon
+public interface IHealth
 {
-
+  void TakeDamage(int damage);
+  void Heal(int heal);
 }

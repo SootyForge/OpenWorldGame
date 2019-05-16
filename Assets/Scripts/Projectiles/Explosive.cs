@@ -4,23 +4,23 @@ using UnityEngine;
 
 namespace Projectiles
 {
-    public class Explosive : Projectile
+  public class Explosive : Projectile
+  {
+    public override void Fire(Vector3 origin, Vector3 direction)
     {
-        public override void Fire(Vector3 origin, Vector3 direction)
-        {
-            throw new System.NotImplementedException();
-        }
+      throw new System.NotImplementedException();
+    }
 
-        // Start is called before the first frame update
-        void Start()
-        {
+    // Start is called before the first frame update
+    void Start()
+    {
 
-        }
+    }
 
-        // Update is called once per frame
-        void Update()
-        {
+    // Update is called once per frame
+    void Update()
+    {
 
-        }
-    } 
+    }
+  }
 }

@@ -213,6 +213,7 @@ MonoBehaviour:
   currentWeapon: {fileID: 0}
   weapons: []
   currentWeaponIndex: 0
+  health: 100
 --- !u!1 &1210411605506874912
 GameObject:
   m_ObjectHideFlags: 0
