@@ -5,8 +5,8 @@ using UnityEngine;
 using System.Linq;
 using NaughtyAttributes;
 
-[RequireComponent(typeof(Player))]
-public class Shooting : MonoBehaviour
+[RequireComponent(typeof(Player), typeof(CameraLook))]
+public class Combat : MonoBehaviour
 {
     [BoxGroup("Weapon")] public Weapon currentWeapon;
     [BoxGroup("Weapon")] public List<Weapon> weapons = new List<Weapon>();
@@ -42,13 +42,13 @@ public class Shooting : MonoBehaviour
                 if (currentWeapon.canShoot)
                 {
                     // Shoot the weapon
-                    currentWeapon.Shoot();
-                    // Apply Weapon Recoil
-                    Vector3 euler = Vector3.up * 2f;
-                    // Randomize the pitch
-                    euler.x = Random.Range(-1f, 1f);
-                    // Apply offset to camera using weapon recoil
-                    cameraLook.SetTargetOffset(euler * currentWeapon.recoil);
+                    currentWeapon.Attack();
+                    //// Apply Weapon Recoil
+                    //Vector3 euler = Vector3.up * 2f;
+                    //// Randomize the pitch
+                    //euler.x = Random.Range(-1f, 1f);
+                    //// Apply offset to camera using weapon recoil
+                    //cameraLook.SetTargetOffset(euler * currentWeapon.recoil);
                 }
             }
         }
