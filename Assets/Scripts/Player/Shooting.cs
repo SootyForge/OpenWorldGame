@@ -8,9 +8,9 @@ using NaughtyAttributes;
 [RequireComponent(typeof(Player))]
 public class Shooting : MonoBehaviour
 {
-    [BoxGroup("Weapon System")] public Weapon currentWeapon;
-    [BoxGroup("Weapon System")] public List<Weapon> weapons = new List<Weapon>();
-    [BoxGroup("Weapon System")] public int currentWeaponIndex = 0;
+    [BoxGroup("Weapon")] public Weapon currentWeapon;
+    [BoxGroup("Weapon")] public List<Weapon> weapons = new List<Weapon>();
+    [BoxGroup("Weapon")] public int currentWeaponIndex = 0;
 
     private Player player;
     private CameraLook cameraLook;

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Events;
+using NaughtyAttributes;
 
 public class OnTriggerEvent : MonoBehaviour
 {
+    [Tag]
     public string hitTag;
     public UnityEvent onEnter, onStay, onExit;
 

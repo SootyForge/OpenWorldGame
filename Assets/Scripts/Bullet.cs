@@ -4,6 +4,7 @@ using UnityEngine;
 
 using NaughtyAttributes;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
     public float speed = 50f;
@@ -25,7 +26,8 @@ public class Bullet : MonoBehaviour
         // Get contact point from collision
         ContactPoint contact = col.contacts[0];
         // Spawn a Bullet on that contact point
-        Instantiate(bulletHolePrefab, contact.point, Quaternion.LookRotation(contact.normal) * Quaternion.AngleAxis(90, Vector3.right));
+        Instantiate(bulletHolePrefab, contact.point, Quaternion.LookRotation(contact.normal) *
+                                                     Quaternion.AngleAxis(90, Vector3.right));
         // Destroy self
         Destroy(gameObject);
     }

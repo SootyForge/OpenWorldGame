@@ -11,10 +11,9 @@ public class Weapon : MonoBehaviour
     [BoxGroup("References")] public Transform shotOrigin;
     [BoxGroup("References")] public GameObject bulletPrefab;
 
-    [ShowNonSerializedField] public bool canShoot = false;
+    [HideInInspector] public bool canShoot = false;
 
     [ShowNonSerializedField] private float shootTimer = 0f;
-
     [ShowNonSerializedField] private int currentReserve = 0, currentClip = 0;
 
     // Start is called before the first frame update
@@ -51,6 +50,7 @@ public class Weapon : MonoBehaviour
                 if (currentReserve >= maxClip)
                 {
                     currentReserve -= maxClip - currentClip;
+
                     currentClip = maxClip;
                 }
                 else if (currentClip < maxClip)
