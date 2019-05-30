@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using NaughtyAttributes;
-
 [CreateAssetMenu(fileName = "Seek", menuName = "SteeringBehaviours/Seek", order = 1)]
 public class Seek : SteeringBehaviour
 {
@@ -12,7 +10,7 @@ public class Seek : SteeringBehaviour
   public override void OnDrawGizmosSelected(AI owner)
   {
     Gizmos.color = Color.blue;
-    float distance = Vector3.Distance(owner.target.position, owner.target.position);
+    float distance = Vector3.Distance(owner.target.position, owner.transform.position);
     Gizmos.DrawWireSphere(owner.transform.position, distance - stoppingDistance);
   }
 
@@ -21,10 +19,16 @@ public class Seek : SteeringBehaviour
     // Create a value to return later
     Vector3 force = Vector3.zero;
 
-    if(owner.hasTarget) // target != null
+    // Get distance between owner and targets
+    float distance = Vector3.Distance(owner.transform.position, owner.target.position);
+    // If AI is further away from Target
+    if (distance >= stoppingDistance)
     {
-      // Get direction from AI agent to Target
-      force += owner.target.position - owner.transform.position;
+      if (owner.hasTarget) // target != null
+      {
+        // Get direction from AI agent to Target
+        force += owner.target.position - owner.transform.position;
+      }
     }
 
     // Return normalized value

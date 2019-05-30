@@ -9,12 +9,13 @@ public class AI : MonoBehaviour
 {
   public bool hasTarget;
   [ShowIf("hasTarget")] public Transform target;
-  public float maxVelocity = 15f;
-  public float maxDistance = 10f;
-  public SteeringBehaviour[] behaviours;
-  protected NavMeshAgent agent;
 
-  private Vector3 velocity;
+  public float maxVelocity = 15f, maxDistance = 10f;
+
+  [Expandable] public SteeringBehaviour[] behaviours;
+  public NavMeshAgent agent;
+  protected Vector3 velocity;
+
   private void Awake()
   {
     agent = GetComponent<NavMeshAgent>();
@@ -25,7 +26,6 @@ public class AI : MonoBehaviour
     Vector3 desiredPosition = transform.position + velocity * Time.deltaTime;
     Gizmos.color = Color.red;
     Gizmos.DrawSphere(desiredPosition, .1f);
-
 
     // Render all behaviours
     foreach (var behaviour in behaviours)

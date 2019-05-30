@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0573dc7b0b558409b430cd14d5de46, type: 3}
   m_Name: Flee
   m_EditorClassIdentifier: 
-  weighting: 0
-  stoppingDistance: 0
+  weighting: 1
+  stoppingDistance: 5
