@@ -759,11 +759,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 220359955586954104, guid: bee800075ab8fbb4aa4262e946c766c7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4832485371904368167, guid: bee800075ab8fbb4aa4262e946c766c7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -819,7 +814,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 723815991540530048, guid: bee800075ab8fbb4aa4262e946c766c7,
+    - target: {fileID: 7650600689487864223, guid: bee800075ab8fbb4aa4262e946c766c7,
         type: 3}
       propertyPath: target
       value: 
