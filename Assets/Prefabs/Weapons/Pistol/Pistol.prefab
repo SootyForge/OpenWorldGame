@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4196102142010574}
   - component: {fileID: 33785344803688610}
   - component: {fileID: 23962127174078338}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c1203f6f8d52ffa4bb08633fbccfa879, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4844595557062866}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ShotOrigin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 135100862177809216}
   - component: {fileID: 120808038222542458}
   - component: {fileID: 2919162093065337296}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 4546115153043056}
   - component: {fileID: 33395806898112632}
   - component: {fileID: 23562486550790502}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 04aacf74b074d5441bc3c6e3e11a2d96, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
