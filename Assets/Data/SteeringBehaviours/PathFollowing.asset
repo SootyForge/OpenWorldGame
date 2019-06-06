@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PathFollowing
   m_EditorClassIdentifier: 
   weighting: 1
-  nodeRadius: 0.54
+  nodeRadius: 1
   targetRadius: 3

@@ -4,9 +4,11 @@ using UnityEngine;
 
 using NaughtyAttributes;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class AI : MonoBehaviour
 {
+  public UnityEvent deathEvent;
   public bool hasTarget;
   [ShowIf("hasTarget")] public Transform target;
 
@@ -59,5 +61,9 @@ public class AI : MonoBehaviour
       // Set agent's destination to hit point
       agent.SetDestination(hit.position);
     }
+  }
+  private void OnDestroy()
+  {
+    deathEvent.Invoke();
   }
 }
