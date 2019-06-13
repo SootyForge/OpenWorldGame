@@ -34,16 +34,16 @@ namespace Tests
     public IEnumerator Player_Was_Damaged_By_Something()
     {
       // Detecting the player at runtime
-      var player = GameObject.FindObjectOfType<Player>();
+      var enemy = GameObject.FindObjectOfType<Enemy>();
 
       // Recording the health of the player
-      var oldHealth = player.health;
+      var oldHealth = enemy.health;
 
       // Waiting one second
-      yield return new WaitForSecondsRealtime(10f);
+      yield return null;
 
       // Asserting that the player's health should be changed
-      Assert.IsTrue(player.health != oldHealth);
+      Assert.IsTrue(enemy.health != oldHealth);
     }
   }
 }

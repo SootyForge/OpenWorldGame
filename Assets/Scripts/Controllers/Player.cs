@@ -7,6 +7,7 @@ using NaughtyAttributes;
 public class Player : MonoBehaviour
 {
   public int health = 100;
+  public int damage = 20;
   public float runSpeed = 8f;
   public float walkSpeed = 6f;
   [MinMaxSlider(0, 100)]
@@ -129,5 +130,14 @@ public class Player : MonoBehaviour
   public void Dash(float boost)
   {
     StartCoroutine(SpeedBoost(boost, dashDuration));
+  }
+
+  private void OnTriggerEnter(Collider other)
+  {
+    Enemy enemy = other.GetComponent<Enemy>();
+    if (enemy)
+    {
+      enemy.TakeDamage(damage);
+    }
   }
 }
