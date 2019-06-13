@@ -14,7 +14,7 @@ public class AI : MonoBehaviour
 
   public float maxVelocity = 15f, maxDistance = 10f;
 
-  [Expandable] public SteeringBehaviour[] behaviours;
+  public SteeringBehaviour[] behaviours;
   public NavMeshAgent agent;
   protected Vector3 velocity;
 

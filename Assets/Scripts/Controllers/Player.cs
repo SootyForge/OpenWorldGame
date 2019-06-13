@@ -6,6 +6,7 @@ using NaughtyAttributes;
 
 public class Player : MonoBehaviour
 {
+  public int health = 100;
   public float runSpeed = 8f;
   public float walkSpeed = 6f;
   [MinMaxSlider(0, 100)]
